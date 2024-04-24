@@ -29,12 +29,12 @@
 
         function DownloadModel() {
             unityInstance.then(function (unity) {
-                unity.SendMessage('ModelLoader', DownloadModel, "https://arapp.fra1.cdn.digitaloceanspaces.com/testwebgl.glb");
+                unity.SendMessage('ModelLoader', "DownloadModel", "https://arapp.fra1.cdn.digitaloceanspaces.com/testwebgl.glb");
             });
         }
         function DownloadColorMap() {
             unityInstance.then(function (unity) {
-                unity.SendMessage('ModelLoader', DownloadColorMap, "https://arapp.fra1.cdn.digitaloceanspaces.com/Material.001_Base_color.png");
+                unity.SendMessage('ModelLoader', "DownloadColorMap", "https://arapp.fra1.cdn.digitaloceanspaces.com/Material.001_Base_color.png");
             });
         }
     </script>
