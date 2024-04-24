@@ -12,6 +12,7 @@
     <div id="redButton" style="border: solid 1px black; width:200px;height:30px;margin:auto;text-align:center" onclick="DownloadModel('https://arapp.fra1.cdn.digitaloceanspaces.com/testwebgl.glb')">DownloadModel</div>
     <div id="greenButton" style="border: solid 1px black; width:200px;height:30px;margin:auto;text-align:center" onclick="DownloadColorMap('https://arapp.fra1.cdn.digitaloceanspaces.com/Material.001_Base_color.png')">DownloadColorMap</div>
 
+
     <script src="Build/Veertix Xpert Assist WebGL.loader.js"></script>
     <script>
         var unityInstance = createUnityInstance(document.querySelector("#unity-canvas"), {
@@ -27,6 +28,7 @@
         });
 
         function DownloadModel(modelUrl) {
+            console.log(modelur);
             unityInstance.then(function (unity) {
                 unity.SendMessage('ModelLoader', DownloadModel, modelUrl);
             });
