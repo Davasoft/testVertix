@@ -9,8 +9,8 @@
 <body style="text-align: center">
     <canvas id="unity-canvas" width=1920 height=1080 style="width: 1920px; height: 1080px; background: #231F20"></canvas>
 
-    <div id="redButton" style="border: solid 1px black; width:200px;height:30px;margin:auto;text-align:center" onclick="DownloadModel('dava')">DownloadModel</div>
-    <div id="greenButton" style="border: solid 1px black; width:200px;height:30px;margin:auto;text-align:center" onclick="DownloadColorMap('https://arapp.fra1.cdn.digitaloceanspaces.com/Material.001_Base_color.png')">DownloadColorMap</div>
+    <div id="redButton" style="border: solid 1px black; width:200px;height:30px;margin:auto;text-align:center" onclick="downloadModel()">DownloadModel</div>
+    <div id="greenButton" style="border: solid 1px black; width:200px;height:30px;margin:auto;text-align:center" onclick="DownloadColorMap()">DownloadColorMap</div>
 
 
     <script src="Build/Veertix Xpert Assist WebGL.loader.js"></script>
@@ -27,15 +27,14 @@
             devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
         });
 
-        function DownloadModel(modelUrl) {
-            console.log(modelUrl);
+        function DownloadModel() {
             unityInstance.then(function (unity) {
-                unity.SendMessage('ModelLoader', DownloadModel, modelUrl);
+                unity.SendMessage('ModelLoader', DownloadModel, "https://arapp.fra1.cdn.digitaloceanspaces.com/testwebgl.glb");
             });
         }
-        function DownloadColorMap(mapUrl) {
+        function DownloadColorMap() {
             unityInstance.then(function (unity) {
-                unity.SendMessage('ModelLoader', DownloadColorMap, mapUrl);
+                unity.SendMessage('ModelLoader', DownloadColorMap, "https://arapp.fra1.cdn.digitaloceanspaces.com/Material.001_Base_color.png");
             });
         }
     </script>
