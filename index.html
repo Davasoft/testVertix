@@ -28,7 +28,7 @@
         });
 
         function DownloadModel(modelUrl) {
-            console.log(modelur);
+            console.log(modelUrl);
             unityInstance.then(function (unity) {
                 unity.SendMessage('ModelLoader', DownloadModel, modelUrl);
             });
