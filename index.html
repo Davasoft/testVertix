@@ -5,21 +5,35 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Veertix Xpert Assist</title>
   </head>
+
   <body style="text-align: center">
-    <canvas id="unity-canvas" width=1920 height=1080 style="width: 1920px; height: 1080px; background: #231F20"></canvas>
-    <script src="Build/Veertix Xpert Assist WebGL.loader.js"></script>
-    <script>
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/Veertix Xpert Assist WebGL.data.unityweb",
-        frameworkUrl: "Build/Veertix Xpert Assist WebGL.framework.js.unityweb",
-        codeUrl: "Build/Veertix Xpert Assist WebGL.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Veertix Xpert Assist",
-        productVersion: "0.1",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      });
-    </script>
+      <canvas id="unity-canvas" width=1920 height=1080 style="width: 1920px; height: 1080px; background: #231F20"></canvas>
+      <script src="Build/Veertix Xpert Assist WebGL.loader.js"></script>
+      <script>
+          var unityInstance = createUnityInstance(document.querySelector("#unity-canvas"), {
+              dataUrl: "Build/Veertix Xpert Assist WebGL.data.unityweb",
+              frameworkUrl: "Build/Veertix Xpert Assist WebGL.framework.js.unityweb",
+              codeUrl: "Build/Veertix Xpert Assist WebGL.wasm.unityweb",
+              streamingAssetsUrl: "StreamingAssets",
+              companyName: "DefaultCompany",
+              productName: "Veertix Xpert Assist",
+              productVersion: "0.1",
+              matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+              devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+          });
+
+          function DownloadModel(modelUrl) {
+              unityInstance.then(function (unity) {
+                  unity.SendMessage('ModelLoader', DownloadModel,modelUrl);
+              });
+          }
+          function DownloadColorMap(mapUrl) {
+              unityInstance.then(function (unity) {
+                  unity.SendMessage('ModelLoader', DownloadColorMap, mapUrl);
+              });
+          }
+      </script>
+      <div id="redButton" style="border: solid 1px black; width:200px;height:30px;margin:auto;text-align:center" onclick="DownloadModel('https://arapp.fra1.cdn.digitaloceanspaces.com/testwebgl.glb')">DownloadModel</div>
+      <div id="greenButton" style="border: solid 1px black; width:200px;height:30px;margin:auto;text-align:center" onclick="DownloadColorMap('https://arapp.fra1.cdn.digitaloceanspaces.com/Material.001_Base_color.png')">DownloadColorMap</div>
   </body>
 </html>
